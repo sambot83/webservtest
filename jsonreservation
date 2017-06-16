@@ -1,0 +1,60 @@
+{
+  "id": "5f476aa8-77d5-4008-8a54-2baacab350b0",
+  "timestamp": "2017-06-16T08:13:04.506Z",
+  "lang": "fr",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "0660875504",
+    "action": "sam.confirmation.reservation",
+    "actionIncomplete": false,
+    "parameters": {
+      "phone-number": "0660875504"
+    },
+    "contexts": [
+      {
+        "name": "reservation",
+        "parameters": {
+          "phone-number": "0660875504",
+          "number": "3",
+          "nom.original": "toto",
+          "heure": "12:00:00",
+          "lejour.original": "lundi",
+          "lejour": "2017-06-19",
+          "phone-number.original": "0660875504",
+          "number.original": "3",
+          "jetski.original": "",
+          "nom": "toto",
+          "jetski": "",
+          "heure.original": "midi"
+        },
+        "lifespan": 4
+      }
+    ],
+    "metadata": {
+      "intentId": "fcaf0ffd-172f-47e9-a9dc-e2f5a5c29c9b",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "intentName": "sam.confirmation.reservation"
+    },
+    "fulfillment": {
+      "speech": "Reservation enregistrée Merci 🙂",
+      "messages": [
+        {
+          "type": 0,
+          "platform": "facebook",
+          "speech": "Reservation enregistrée Merci 🙂"
+        },
+        {
+          "type": 0,
+          "speech": "Reservation enregistrée Merci 🙂"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "1ed16f36-0d9c-4f20-9eaf-8f5ce41e413f"
+}
