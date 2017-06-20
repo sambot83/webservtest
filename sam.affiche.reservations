@@ -1,0 +1,39 @@
+{
+  "id": "98d871c1-12f2-4ec7-bdb4-edb9f00b566d",
+  "timestamp": "2017-06-20T09:18:18.287Z",
+  "lang": "fr",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "lundi",
+    "action": "sam.affiche.reservations",
+    "actionIncomplete": false,
+    "parameters": {
+      "jour": "2017-06-26"
+    },
+    "contexts": [],
+    "metadata": {
+      "intentId": "dcfd8862-d1d0-4785-b487-8e524ef807a7",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "webhookResponseTime": 160,
+      "intentName": "sam.affiche.reservations"
+    },
+    "fulfillment": {
+      "speech": "ws : not available",
+      "source": "java-webhook",
+      "displayText": "ws : not available",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "ws : not available"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "1ed16f36-0d9c-4f20-9eaf-8f5ce41e413f"
+}

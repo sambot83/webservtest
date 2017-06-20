@@ -36,8 +36,10 @@ public class App
         	
         	 
         	// JSONParser parser = new JSONParser();
-        	String pathJsonIn="/media/rops/INTENSO/monmeilleurbot/mesbots/sambot/exempleswebserv/jsonreservation";
-           //Object obj = parser.parse(new FileReader());
+        	//String pathJsonIn="jsonreservation";
+           // String pathJsonIn="sam.confirmation.suppression.reservations";
+        	String pathJsonIn="sam.affiche.reservations";
+        	//Object obj = parser.parse(new FileReader());
         
            String obj=readFile(pathJsonIn);
            
@@ -54,8 +56,8 @@ public class App
             //JSONObject Jresult=requete.getJSONObject("result");
 			//String ACTION=Jresult.getString("action");
           
-              System.out.println(agent.Action_Get_Reservation());
-              System.out.println(agent.Action_Delete_Reservation());
+             // System.out.println(agent.Action_Get_Reservation());
+            //  System.out.println(agent.Action_Delete_Reservation());
        
         
         
@@ -92,7 +94,7 @@ public class App
     private static Connection getConnection() throws URISyntaxException, SQLException {
       
     	//String DATABASE_URLSTRING="postgres://odmjordlrnmlzz:612a8061c5f37732eab41b0538c60fbbf2a30eec9ee4e977a18e8e35c6a4c77d@ec2-54-225-68-71.compute-1.amazonaws.com:5432/d2s08uq82ndrje"; 
-    	String DATABASE_URLSTRING="postgres://dqfmltmvnmpedl:60174fdf8e1a1f3af730888b5c8ab792c4d534c44456807b7d757c2d78c0c08a@ec2-107-20-186-238.compute-1.amazonaws.com:5432/dfdbr6s800tsc2";
+    	String DATABASE_URLSTRING="postgres://voxufhqziqcrro:23e9024022f3f9bd6c8270e855b050ed005af2c15d689a073a4bacae76d6bfdc@ec2-184-73-167-43.compute-1.amazonaws.com:5432/dfs471uekvsht9";
     	URI dbUri = new URI(DATABASE_URLSTRING);
 
     	

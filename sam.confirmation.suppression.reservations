@@ -1,0 +1,48 @@
+{
+  "id": "cf4500ef-f280-49c2-bf92-7ded2cc98466",
+  "timestamp": "2017-06-20T08:30:47.778Z",
+  "lang": "fr",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "4567",
+    "action": "sam.confirmation.suppression.reservations",
+    "actionIncomplete": false,
+    "parameters": {
+      "codesecret": "4567"
+    },
+    "contexts": [
+      {
+        "name": "suppressionreservation",
+        "parameters": {
+          "codesecret": "4567",
+          "codesecret.original": "4567"
+        },
+        "lifespan": 4
+      }
+    ],
+    "metadata": {
+      "intentId": "75c524f9-457b-494c-9e7d-1417eaeca89b",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "webhookResponseTime": 170,
+      "intentName": "sam.confirmation.suppression.reservations"
+    },
+    "fulfillment": {
+      "speech": "ws : not available",
+      "source": "java-webhook",
+      "displayText": "ws : not available",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "ws : not available"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "1ed16f36-0d9c-4f20-9eaf-8f5ce41e413f"
+}

@@ -60,7 +60,14 @@ public class AgentWS {
             {
             	return Action_Get_Reservation();
             }
-            
+            if(ACTION.compareTo( "sam.confirmation.suppression.reservations")==0)
+            {
+            	return Action_Suppression_Reservations( result);
+            }
+            if(ACTION.compareTo( "sam.affiche.reservations")==0)
+            {
+            	return Action_Affiches_Reservations(result);
+            }
             
             
 			
@@ -75,7 +82,103 @@ public class AgentWS {
 		return rep;
 	}
 	
-	public String Action_Insert_Reservation(JSONObject result)
+	public String Action_Affiches_Reservations(JSONObject result)
+	{
+		String message ="connection au serveur impossible ";
+		try
+		{
+			String rep="";
+			
+			JSONObject parameters=(JSONObject) result.get("parameters");
+			String lejour =(String) parameters.get("jour");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
+	    	
+	    	Date date = sdf.parse(lejour);
+
+	    	Calendar debut=Calendar.getInstance();
+	    	debut.setTime(date);
+	    	Calendar fin=Calendar.getInstance();
+	    	fin.setTime(date);
+	    	fin.add(Calendar.DAY_OF_YEAR, 1);
+	    	
+	    	
+	    	String SQL = "SELECT * FROM reservations WHERE debut>= ? AND debut <= ?";
+	    	 PreparedStatement pstmt = this.connection.prepareStatement(SQL);
+	      
+	    	  pstmt.setTimestamp(1,getSqlTimeStamp(debut) );
+	            pstmt.setTimestamp(2,getSqlTimeStamp(fin) );
+	            ResultSet rs = pstmt.executeQuery();
+	 	       // String res="";
+	 	        while (rs.next()) {
+	 	        	//res+="Read from DB: " + rs.getTimestamp("tick")+"\n";
+	 	        	//java.sql.Timestamp TSDEBUT = rs.getTimestamp("debut");
+	 	        	
+	 	        	//rep+=rs.getString(3)+" "+rs.getTimestamp("debut")+"\n";
+	 	        	
+	 	            rep+= rs.getString("nom")+" le "+ rs.getTimestamp("debut")+" tel "+rs.getString("telephone")+"\n";
+	 	            
+	 	            
+	 	            
+	 	        }
+	 	        
+	 	        if(rep.length()==0)
+	 	        {
+	 	        	return "pas de reservation ce jour ";
+	 	        	
+	 	        }
+	    	return rep;
+	    	
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		
+		return Action_Get_Reservation();
+	}
+	
+	public String Action_Suppression_Reservations(JSONObject result)
+	{
+		String message="suppression impossible pour le moment";
+		JSONArray contexts;
+		try {
+			contexts = (JSONArray) result.get("contexts");
+				
+			 if(contexts.length()==0)
+    		 {
+    			 return message;
+    		 }
+    		 
+    		  for(int i=0; i<contexts.length();i++)
+    		  {
+    		JSONObject context =(JSONObject) contexts.get(i);
+    		String nomcontext=(String) context.get("name");
+    		if(nomcontext.compareTo("suppressionreservation")==0)
+    		{
+    		JSONObject parameters=(JSONObject) context.get("parameters");
+    		String codesecret=(String) parameters.get("codesecret");
+    		
+    		if(codesecret.compareTo("1503")==0)
+    		{
+    			return Action_Delete_Reservation();
+    		}
+    		return "c'est pas le bon code !";
+    		
+    		}
+    		  }
+			
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   
+   	 
+		
+		return message;
+	}
+		public String Action_Insert_Reservation(JSONObject result)
 	{
 		String message="pb reservation";
 		JSONArray contexts;
@@ -339,8 +442,9 @@ public class AgentWS {
 	        	
 	        	//rep+=rs.getString(3)+" "+rs.getTimestamp("debut")+"\n";
 	        	
-	            rep+= rs.getString("nom")+" à "+ rs.getTimestamp("debut")+"\n";
-	            
+	          
+	            rep+= rs.getString("nom")+" le "+ rs.getTimestamp("debut")+" tel "+rs.getString("telephone")+"\n";
+		 	    
 	            
 	            
 	        }
